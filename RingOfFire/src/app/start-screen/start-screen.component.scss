@@ -1,25 +1,36 @@
 @use '../styles/global' as g;
 
+$btnSec: #494949;
+$btnHighlight: red;
 
 .bg {
     height: 100%;
     width: 100%;
     @include g.dFlex();
     background-color: g.$startBg;
+    background-image: url('/assets/img/start_screen/cards.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 
 button {
     background-color: gold;
-    font-size: large;
+    font-size: 2rem;
     padding: 0.4rem;
-    border-color: black;
+    border-color: $btnSec;
+    color: $btnSec;
     border-radius: 12px;
-    width: 260px;
-    height: 60px;
+    border-style: solid;
+    width: 28vw;
+    min-width: 240px;
+    aspect-ratio: 16/4;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     &:hover {
-        background-color: goldenrod;
+        filter: brightness(1.2);
+        color: $btnHighlight;
+        border-color: $btnHighlight;
     }
 }
