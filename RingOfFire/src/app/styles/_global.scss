@@ -1,0 +1,8 @@
+$startBg: #0C6932;
+
+@mixin dFlex($jc: center, $ai: center, $gap: 1rem) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gap
+}

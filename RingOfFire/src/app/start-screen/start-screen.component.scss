@@ -1,0 +1,25 @@
+@use '../styles/global' as g;
+
+
+.bg {
+    height: 100%;
+    width: 100%;
+    @include g.dFlex();
+    background-color: g.$startBg;
+}
+
+
+button {
+    background-color: gold;
+    font-size: large;
+    padding: 0.4rem;
+    border-color: black;
+    border-radius: 12px;
+    width: 260px;
+    height: 60px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: goldenrod;
+    }
+}
