@@ -1,1 +1,15 @@
-<p>game works!</p>
+<div class="playground">
+
+        <div class="card-stack">
+            @for(count of [0, 1, 2, 3]; track count;){
+                <img [ngStyle]="{'left': count * 4 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
+            }
+            <img (click)="pickCard()" class="hover-card" [ngStyle]="{'left': 16 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
+            <ng-template [ngIf]="pickedCard">
+                <img class="draw-card" src="/assets/img/playing_cards/ace_1.png" alt="">
+            </ng-template>
+            
+        </div>
+
+
+</div>

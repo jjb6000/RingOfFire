@@ -1,0 +1,60 @@
+@use '../styles/global' as g;
+$drawTransform: translateX(200px) translateY(-280px) scale(1.1) rotate(16deg);
+
+
+.playground {
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/img/game/bg.jpg');
+    background-position: center;
+    background-size: cover;
+    @include g.dFlex();
+}
+
+
+.card-stack {
+    height: 260px;
+    width: 160px;
+    position: relative;
+
+    img {
+        width: 160px;
+        position: absolute;
+    }
+}
+
+
+.hover-card {
+    cursor: pointer;
+
+    &:hover {
+        transition: all 180ms ease-in-out;
+        transform: translateY(-16px);
+        filter: brightness(1.5);
+        scale: 1.05;
+    }
+}
+
+
+.draw-card {
+    left: 16px;
+    // transition: all 180ms ease-in-out;
+    animation: draw-card-animation 1s ease-in-out;
+    transform: $drawTransform;
+}
+
+
+@keyframes draw-card-animation {
+    0% {
+        transform: scale(1.05);
+    }
+    20% {
+        transform: scale(1.5);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: $drawTransform;
+    }
+}
