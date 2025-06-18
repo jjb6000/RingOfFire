@@ -9,6 +9,7 @@ $drawTransform: translateX(200px) translateY(-280px) scale(1.1) rotate(16deg);
     background-position: center;
     background-size: cover;
     @include g.dFlex();
+    position: relative;
 }
 
 

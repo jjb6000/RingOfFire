@@ -1,0 +1,14 @@
+@use '../styles/global' as g;
+
+.player-sidebar {
+    position: absolute;
+    @include g.dFlex($gap: 40px, $ai: start);
+    flex-direction: column;
+    top: 25%;
+    right: 20px;
+}
+
+.player-container {
+    @include g.dFlex();
+    color: white;
+}
