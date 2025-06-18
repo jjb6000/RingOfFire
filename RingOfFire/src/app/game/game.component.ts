@@ -9,11 +9,12 @@ import { Game } from '../../models/game';
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit {
-  pickedCard = false;
+  pickedCardAnimation = false;
   game: Game | undefined
+  currentCard: string | undefined;
 
-  constructor() {}
-  
+  constructor() { }
+
   ngOnInit() {
     this.newGame()
   }
@@ -24,6 +25,7 @@ export class GameComponent implements OnInit {
 
 
   pickCard() {
-    this.pickedCard = true;
+    this.currentCard = this.game?.stack.pop();
+    if (this.currentCard) this.game?.playedCards.push(this.currentCard);
   }
 }

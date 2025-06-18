@@ -5,9 +5,10 @@
                 <img [ngStyle]="{'left': count * 4 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
             }
             <img (click)="pickCard()" class="hover-card" [ngStyle]="{'left': 16 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
-            <ng-template [ngIf]="pickedCard">
-                <img class="draw-card" src="/assets/img/playing_cards/ace_1.png" alt="">
-            </ng-template>
+
+            @for(card of game?.playedCards; track $index) {
+                <img class="draw-card" src="/assets/img/playing_cards/{{ card }}.png" alt="">
+            }
             
         </div>
 
