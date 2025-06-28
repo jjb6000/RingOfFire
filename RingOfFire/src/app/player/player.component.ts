@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-player',
-  imports: [],
+  imports: [MatChipsModule],
   templateUrl: './player.component.html',
   styleUrl: './player.component.scss'
 })
