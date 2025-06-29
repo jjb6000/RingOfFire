@@ -29,14 +29,15 @@ export class GameComponent implements OnInit {
   pickedCardAnimation = false;
   game: Game | undefined
   currentCard: string | undefined;
-  readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);
+  readonly dialog = inject(MatDialog);
+  readonly dialogRef = inject(MatDialogRef<AddPlayerDialog>);
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   readonly name = model(this.data.name);
 
   constructor() { }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(AddPlayerDialog, {
       data: { name: this.name() },
     });
 
@@ -60,6 +61,17 @@ export class GameComponent implements OnInit {
   pickCard() {
     this.currentCard = this.game?.stack.pop();
     if (this.currentCard) this.game?.playedCards.push(this.currentCard);
+  }
+}
+
+
+export class AddPlayerDialog {
+  readonly dialogRef = inject(MatDialogRef<AddPlayerDialog>);
+  readonly data = inject<DialogData>(MAT_DIALOG_DATA);
+  readonly name = model(this.data.name);
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
 
