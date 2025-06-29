@@ -59,3 +59,9 @@ $drawTransform: translateX(200px) translateY(-280px) scale(1.1) rotate(16deg);
         transform: $drawTransform;
     }
 }
+
+.add-btn {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}

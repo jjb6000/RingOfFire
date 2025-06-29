@@ -1,21 +1,24 @@
-
-
 <div class="playground">
 
-        @if (game) {
-            <app-player [players]="game.players" ></app-player>
+    @if (game) {
+    <app-player [players]="game.players"></app-player>
+    }
+
+    <div class="card-stack">
+        @for(count of [0, 1, 2, 3]; track count;){
+        <img [ngStyle]="{'left': count * 4 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
+        }
+        <img (click)="pickCard()" class="hover-card" [ngStyle]="{'left': 16 + 'px'}"
+            src="/assets/img/playing_cards/card_cover.png" alt="">
+
+        @for(card of game?.playedCards; track $index) {
+        <img class="draw-card" src="/assets/img/playing_cards/{{ card }}.png" alt="">
         }
 
-        <div class="card-stack">
-            @for(count of [0, 1, 2, 3]; track count;){
-                <img [ngStyle]="{'left': count * 4 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
-            }
-            <img (click)="pickCard()" class="hover-card" [ngStyle]="{'left': 16 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
+    </div>
 
-            @for(card of game?.playedCards; track $index) {
-                <img class="draw-card" src="/assets/img/playing_cards/{{ card }}.png" alt="">
-            }
-            
-        </div>
+    <button mat-fab aria-label="add Player" class="add-btn">
+        <mat-icon>add</mat-icon>
+    </button>
 
 </div>
