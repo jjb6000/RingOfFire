@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy, inject, model, signal } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,8 +29,24 @@ export class GameComponent implements OnInit {
   pickedCardAnimation = false;
   game: Game | undefined
   currentCard: string | undefined;
+  readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);
+  readonly data = inject<DialogData>(MAT_DIALOG_DATA);
+  readonly name = model(this.data.name);
 
   constructor() { }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: { name: this.name() },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        this.name.set(result);
+      }
+    });
+  }
 
   ngOnInit() {
     this.newGame()
@@ -47,31 +63,6 @@ export class GameComponent implements OnInit {
   }
 }
 
-export class DialogOverviewExample {
-  readonly name = signal('');
-  readonly dialog = inject(MatDialog);
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {name: this.name()},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined) {
-        this.name.set(result);
-      }
-    });
-  }
-}
 
 
-export class DialogOverviewExampleDialog {
-  readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);
-  readonly data = inject<DialogData>(MAT_DIALOG_DATA);
-  readonly name = model(this.data.name);
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
