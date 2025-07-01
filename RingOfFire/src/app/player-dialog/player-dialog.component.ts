@@ -1,5 +1,8 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import {
   MatDialog,
   MatDialogActions,
@@ -16,9 +19,19 @@ export interface DialogData {
 @Component({
   selector: 'player-dialog',
   templateUrl: 'player-dialog.component.html',
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+  imports: [MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerDialog {
   readonly dialogRef = inject(MatDialogRef<PlayerDialog>);
+  name: string = '';
+
+
 }
