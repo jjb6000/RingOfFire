@@ -1,5 +1,5 @@
 export class Game {
-    players: string[] = ['Gordon Shumway', 'Lynn Tanner', 'William Tanner'];
+    players: string[] = [];
     stack: string[] = [];
     playedCards: string[] = [];
     currentPlayer: number = 0;
