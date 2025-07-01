@@ -47,6 +47,13 @@ export class GameComponent implements OnInit {
   pickCard() {
     this.currentCard = this.game?.stack.pop();
     if (this.currentCard) this.game?.playedCards.push(this.currentCard);
+    setTimeout(() => {
+      if (this.game) {
+        this.game.currentPlayer === this.game.players.length - 1 ? this.game.currentPlayer = 0 : this.game.currentPlayer++
+      }
+    }, 800);
+    console.log(this.game?.currentPlayer);
+
   }
 }
 

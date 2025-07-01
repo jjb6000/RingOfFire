@@ -1,6 +1,6 @@
 <div class="player-sidebar">
     @for(name of players; track $index) {
-    <div class="player-container">
+    <div [ngClass]="{'player-active': players.indexOf(name) === currentPlayer}" class="player-container">
         <img src="/assets/img/game/account_circle.svg" alt="">
         <span>{{ name }}</span>
     </div>
