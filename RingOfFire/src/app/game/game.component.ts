@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ChangeDetectionStrategy, inject, model, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { PlayerDialog } from '../player-dialog/player-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { GameInfoComponent } from '../game-info/game-info.component';
 
 export interface DialogData {
   name: string;
@@ -13,7 +14,7 @@ export interface DialogData {
 
 @Component({
   selector: 'app-game',
-  imports: [CommonModule, PlayerComponent, MatIconModule, MatButtonModule, MatDialogModule],
+  imports: [CommonModule, PlayerComponent, MatIconModule, MatButtonModule, MatDialogModule, GameInfoComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
