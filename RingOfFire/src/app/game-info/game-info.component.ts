@@ -36,13 +36,21 @@ export class GameInfoComponent implements OnChanges, OnInit {
   @Input() card: string | undefined = '';
 
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (changes['players']) {
+      console.log(changes['players'].currentValue, changes['players'].previousValue);
+    }
+
+    if (changes['card']) {
+      console.log(changes['card'].currentValue, changes['card'].previousValue);
+    }
+
 
     if (this.players && this.players >= 2 && !this.card) {
       this.title = 'Draw a card or add more Players if you want!'
     } else {
-      if(!this.card) return
-      console.log('app-info-compo:', this.card);
+      if (!this.card) return
       const actionIndex = Number(this.card.split('_')[1]) - 1;
       try {
         this.title = this.cardAction[actionIndex].title;
@@ -51,7 +59,5 @@ export class GameInfoComponent implements OnChanges, OnInit {
         throw error
       }
     }
-
-
   }
 }

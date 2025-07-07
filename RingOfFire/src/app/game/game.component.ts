@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Game } from '../../models/game';
 import { PlayerComponent } from '../player/player.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,6 +24,7 @@ export class GameComponent implements OnInit {
   currentCard: string | undefined;
   
   constructor(public dialog: MatDialog) { }
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PlayerDialog);
