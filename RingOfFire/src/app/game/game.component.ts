@@ -22,8 +22,7 @@ export class GameComponent implements OnInit {
   pickedCardAnimation = false;
   game: Game | undefined
   currentCard: string | undefined;
-
-
+  
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
@@ -45,6 +44,13 @@ export class GameComponent implements OnInit {
   }
 
 
+  checkReadyPickCard() {
+    if (this.game && this.game.players.length > 1) {
+      this.pickCard();
+    } 
+  }
+
+
   pickCard() {
     this.currentCard = this.game?.stack.pop();
     if (this.currentCard) this.game?.playedCards.push(this.currentCard);
@@ -53,9 +59,8 @@ export class GameComponent implements OnInit {
         this.game.currentPlayer === this.game.players.length - 1 ? this.game.currentPlayer = 0 : this.game.currentPlayer++
       }
     }, 800);
-    console.log(this.game?.currentPlayer);
-
   }
+
 }
 
 

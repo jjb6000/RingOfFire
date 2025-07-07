@@ -8,7 +8,7 @@
         @for(count of [0, 1, 2, 3]; track count;){
         <img [ngStyle]="{'left': count * 4 + 'px'}" src="/assets/img/playing_cards/card_cover.png" alt="">
         }
-        <img (click)="pickCard()" class="hover-card" [ngStyle]="{'left': 16 + 'px'}"
+        <img (click)="checkReadyPickCard()" class="hover-card" [ngStyle]="{'left': 16 + 'px'}"
             src="/assets/img/playing_cards/card_cover.png" alt="">
 
         @for(card of game?.playedCards; track $index) {
@@ -22,7 +22,9 @@
     </button>
 
 
-    <app-game-info />
+    @if (game) {
+        <app-game-info [card]="currentCard" [players]="game.players.length" />
+    } 
 
     
 
