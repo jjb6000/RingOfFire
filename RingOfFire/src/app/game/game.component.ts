@@ -57,7 +57,8 @@ export class GameComponent implements OnInit {
     if (this.currentCard) this.game?.playedCards.push(this.currentCard);
     setTimeout(() => {
       if (this.game) {
-        this.game.currentPlayer === this.game.players.length - 1 ? this.game.currentPlayer = 0 : this.game.currentPlayer++
+        this.game.currentPlayer++
+        this.game.currentPlayer = this.game.currentPlayer % this.game.players.length
       }
     }, 800);
   }
