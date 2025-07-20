@@ -8,7 +8,7 @@ $btnHighlight: red;
     width: 100%;
     @include g.dFlex();
     background-color: g.$startBg;
-    background-image: url('/assets/img/start_screen/cards.jpg');
+    background-image: url('/angular-projects/ringoffire/assets/img/start_screen/cards.jpg');
     background-position: center;
     background-size: cover;
 }
